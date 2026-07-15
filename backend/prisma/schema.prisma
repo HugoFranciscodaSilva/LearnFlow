@@ -18,8 +18,10 @@ model Usuario{
   nome String 
   email String @unique
   senhaHash String 
-  cargo Cargo
+  cargo Cargo @default(Estudante)
   dataCriacao DateTime @default(now()) @map("criado_em")
+  cursoCriado Curso[]
+  matriculas Matricula[]
 
   @@map("usuarios")
 }
@@ -30,6 +32,9 @@ model Curso{
   descricao String
   capa String
   modulo Modulo[]
+  matriculas Matricula[]
+  instrutorId Usuario @relation(fields: [criadorId],references: [id])
+  criadorId Int @map("instrutor_id")
 
   @@map("cursos")
 }
@@ -48,10 +53,36 @@ model Aula{
   id Int @id @default(autoincrement())
   titulo String
   url String
+  ordem Int
   modulo Modulo @relation(fields: [moduloId],references: [id])
   moduloId Int @map("id_modulo") 
+
+  progresso AlunoProgresso[]
   
   @@map("aulas")
+}
+
+model Matricula{
+  id Int @id @default(autoincrement())
+  alunoInscrito Usuario @relation(fields: [alunoId],references: [id])
+  alunoId Int 
+  cursoId Int
+  curso Curso @relation(references: [id],fields: [cursoId])
+  criadoEm DateTime @default(now()) @map("criado_em")
+
+  @@unique([alunoId])
+  @@map("matriculas")
+}
+
+model AlunoProgresso{
+  id Int @id @default(autoincrement())
+  alunoId Int
+  aulaId Int 
+  aula Aula @relation(fields: [aulaId],references: [id])
+  concluidoProgresso DateTime @default(now()) @map("concluido_em")
+
+
+  @@unique([alunoId,aulaId])
 }
 
 enum Cargo{
