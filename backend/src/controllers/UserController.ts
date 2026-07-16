@@ -5,7 +5,14 @@ import prisma from "../lib/prisma.js";
 export const getUsers = async (req:Request,res:Response) => {
 
     try {
-        const users = await prisma.usuario.findMany()
+        const users = await prisma.usuario.findMany({select:{
+            id:true,
+            nome:true,
+            email:true,
+            cursoCriado:true,
+            cargo:true,
+            dataCriacao:true
+        }})
         res.status(200).json(users)
     } catch (error) {
         console.log(error)
