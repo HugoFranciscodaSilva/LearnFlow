@@ -2,6 +2,8 @@ import express from 'express'
 import 'dotenv/config.js'
 import UserRoutes from './routes/UserRoute.js'
 import CourseRoutes from './routes/CourseRoute.js'
+import LessonRoutes from './routes/LessonRoute.js'
+import ModuleRoutes from './routes/ModuleRoute.js'
 
 const app = express()
 const PORTA = process.env.PORTA
@@ -14,6 +16,8 @@ app.get("/",(req,res)=>{
 
 app.use('/users',UserRoutes)
 app.use('/courses',CourseRoutes)
+app.use('/modules',ModuleRoutes)
+app.use('/lessons',LessonRoutes)
 
 app.listen(PORTA,()=>{
     console.log(`Servidor rodando em http://localhost:${PORTA}`)
