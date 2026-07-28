@@ -15,7 +15,7 @@ export const login = async (req:RequestExtends,res:Response,next:NextFunction) =
     if(!authHeader) return res.status(401).json({mensagem:"Token não fornecido!"})
 
 
-    const [ token,schema ] = authHeader.split(' ')
+    const [ schema,token ] = authHeader.split(' ')
 
     if(!token || schema !== "Bearer") return res.status(401).json({mensagem:"Token mal formatado!"})
     
@@ -29,7 +29,7 @@ export const login = async (req:RequestExtends,res:Response,next:NextFunction) =
 }
 
 export const verifyInstructor = async (req:RequestExtends,res:Response,next:NextFunction) =>{
-    if(req.user.role !== "Instrutor") return res.status(400).json({mensagem:"Apenas intrutor pode fazer essa ação!"})
+    if(req.user.userRole !== "Instrutor") return res.status(400).json({mensagem:"Apenas intrutor pode fazer essa ação!"})
 
     return next()
 }
