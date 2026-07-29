@@ -12,7 +12,7 @@ export function proxy(req:NextRequest){
         }
     }
 
-    if(pathname !== '/' || pathname.startsWith('/cadastro')){
+    if(pathname === '/' || pathname.startsWith('/cadastro')){
         if(token){
             return NextResponse.redirect(new URL('/dashboard',req.url))
         }

@@ -65,7 +65,7 @@ export default function FormLogin(){
             </div>
             <div>
                 <Label htmlFor="senha">Senha:</Label>
-                <Input {...register('password')} type="password" id="senha" placeholder="..........."/>
+                <Input {...register('password')} type="password" id="senha" placeholder="•••••••••••"/>
                 {errors?.password && <span>{errors.password.message}</span>}
             </div>
             <Button type="submit" className="w-full">{isPending ? 'Entrando...' : 'Entrar'}</Button>

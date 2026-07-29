@@ -49,7 +49,7 @@ export default function FormCadastro(){
             </div>
             <div>
                 <Label htmlFor="senha">Senha:</Label>
-                <Input {...register('password')} id="senha" type="password" placeholder="......."/>
+                <Input {...register('password')} id="senha" type="password" placeholder="•••••••••••"/>
                 {errors?.password && <span>{errors.password.message}</span>}
             </div>
             <Button type="submit" className="w-full">{isPending ? 'Criando...' : 'Criar Conta'}</Button>
