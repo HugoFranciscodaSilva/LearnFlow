@@ -9,11 +9,23 @@ import { LoginProps, LoginSchema } from "@/schemas/UserSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import Cookies from 'js-cookie'
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 export default function FormLogin(){
+
+    const SearchParams = useSearchParams()
+    const errorTypes = SearchParams.get('error')
+
+    useEffect(()=>{
+        if(errorTypes === "unauthorized"){
+            alert("Você precisa logar!")
+            window.history.replaceState({},'','/')
+        }
+    },[errorTypes])
+    
 
     const router = useRouter()
     const queryClient = useQueryClient()

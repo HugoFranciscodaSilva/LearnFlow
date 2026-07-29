@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Link from "next/link";
 
 export default function Home() {
+
   return (
     <Card className="w-[30%] m-auto">
       <CardHeader>
