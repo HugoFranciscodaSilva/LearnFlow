@@ -6,7 +6,7 @@ export function proxy(req:NextRequest){
 
     const { pathname } = req.nextUrl
 
-    if(pathname !== '/'){
+    if(pathname.startsWith('/dashboard')){
         if(!token){
             return NextResponse.redirect(new URL('/?error=unauthorized',req.url))
         }

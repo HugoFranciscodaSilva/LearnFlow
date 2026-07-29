@@ -1,6 +1,11 @@
 import FormLogin from "@/components/FormLogin/FormLogin";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title:"LearnFlow - Login"
+}
 
 export default function Home() {
 

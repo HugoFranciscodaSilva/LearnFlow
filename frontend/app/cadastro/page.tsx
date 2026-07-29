@@ -1,6 +1,12 @@
 import FormCadastro from "@/components/FormCadastro/FormCadastro";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: "LearnFlow - Cadastro"
+}
+
 
 export default function Cadastro(){
     return(
