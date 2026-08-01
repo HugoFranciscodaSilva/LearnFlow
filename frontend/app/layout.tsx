@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "../shared/tailwind.css"
 import { cn } from "@/lib/utils";
 import ClientProvider from "./providers";
+import { LayoutNav } from "@/components/Navbar/Navbar";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -33,7 +34,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col dark">
         <ClientProvider>
-          {children}
+          <LayoutNav>
+            {children}
+          </LayoutNav>
         </ClientProvider>
         </body>
     </html>

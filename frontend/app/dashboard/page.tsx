@@ -30,7 +30,7 @@ export default function Dashboard(){
 
     
     return(
-        <main className="p-5 space-y-3">
+        <main className="p-5 space-y-3 flex-1">
             <section>
                 <h1 className="text-3xl font-bold mb-2">Instructor Dashboard</h1>
                 <p className="text-muted-foreground">Welcome back, Professor Davis. Here's what's happening today.</p>
